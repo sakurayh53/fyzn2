@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+	<!DOCTYPE html>
+	<html lang="zh-CN">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>非遗助农·数字工坊</title>
+	    <style>
+	        * {
+	            margin: 0;
+	            padding: 0;
+	            box-sizing: border-box;
+	            font-family: "Microsoft YaHei", sans-serif;
+	        }
+	        
+	        body {
+	            background-color: #f5f5f5;
+	            color: #333;
+	        }
+	        
+	        /* 头部样式 */
+	        header {
+	            background-color: #1e50a2;
+	            padding: 15px 0;
+	            position: relative;
+	        }
+	        
+	        .header-content {
+	            width: 90%;
+	            max-width: 1200px;
+	            margin: 0 auto;
+	            display: flex;
+	            justify-content: space-between;
+	            align-items: center;
+	        }
+	        
+	        .logo {
+	            color: white;
+	        }
+	        
+	        .logo h1 {
+	            font-size: 28px;
+	            margin-bottom: 5px;
+	        }
+	        
+	        .logo p {
+	            font-size: 14px;
+	        }
+	        
+	        .search-box {
+	            display: flex;
+	        }
+	        
+	        .search-box input {
+	            padding: 8px 15px;
+	            border: none;
+	            border-radius: 4px 0 0 4px;
+	            width: 250px;
+	        }
+	        
+	        .search-box button {
+	            padding: 8px 15px;
+	            background-color: #ff6b00;
+	            color: white;
+	            border: none;
+	            border-radius: 0 4px 4px 0;
+	            cursor: pointer;
+	        }
+	        
+	        /* 导航栏样式 */
+	        nav {
+	            background-color: #1e50a2;
+	            padding: 10px 0;
+	        }
+	        
+	        .nav-container {
+	            width: 90%;
+	            max-width: 1200px;
+	            margin: 0 auto;
+	        }
+	        
+	        .nav-menu {
+	            display: flex;
+	            list-style: none;
+	        }
+	        
+	        .nav-menu li {
+	            margin-right: 30px;
+	        }
+	        
+	        .nav-menu a {
+	            color: white;
+	            text-decoration: none;
+	            font-size: 16px;
+	            padding: 5px 10px;
+	            border-radius: 4px;
+	            transition: all 0.3s;
+	        }
+	        
+	        .nav-menu a:hover, .nav-menu a.active {
+	            background-color: white;
+	            color: #1e50a2;
+	        }
+	        
+	        /* 轮播图样式 */
+	        .slider {
+	            width: 90%;
+	            max-width: 1200px;
+	            margin: 20px auto;
+	            overflow: hidden;
+	            position: relative;
+	            height: 300px;
+	        }
+	        
+	        .slider-container {
+	            display: flex;
+	            transition: transform 0.5s ease;
+	            height: 100%;
+	        }
+	        
+	        .slide {
+	            min-width: 100%;
+	            height: 100%;
+	        }
+	        
+	        .slide img {
+	            width: 100%;
+	            height: 100%;
+	            object-fit: cover;
+	        }
+	        
+	        /* 主要内容区样式 */
+	        .main-content {
+	            width: 90%;
+	            max-width: 1200px;
+	            margin: 30px auto;
+	        }
+	        
+	        .section-title {
+	            display: flex;
+	            justify-content: space-between;
+	            align-items: center;
+	            margin-bottom: 20px;
+	            padding-bottom: 10px;
+	            border-bottom: 2px solid #1e50a2;
+	        }
+	        
+	        .section-title h2 {
+	            font-size: 22px;
+	            color: #1e50a2;
+	        }
+	        
+	        .section-title a {
+	            color: #666;
+	            text-decoration: none;
+	            font-size: 14px;
+	        }
+	        
+	        .section-title a:hover {
+	            color: #1e50a2;
+	        }
+	        
+	        .content-row {
+	            display: flex;
+	            margin-bottom: 30px;
+	        }
+	        
+	        .image-grid {
+	            flex: 2;
+	            display: grid;
+	            grid-template-columns: repeat(3, 1fr);
+	            grid-gap: 15px;
+	        }
+	        
+	        .image-item {
+	            background-color: white;
+	            border-radius: 4px;
+	            overflow: hidden;
+	            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	            transition: all 0.3s;
+	        }
+	        
+	        .image-item:hover {
+	            transform: translateY(-5px);
+	            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+	        }
+	        
+	        .image-item img {
+	            width: 100%;
+	            height: 180px;
+	            object-fit: cover;
+	        }
+	        
+	        .image-item p {
+	            padding: 10px;
+	            text-align: center;
+	            color: #333;
+	            transition: all 0.3s;
+	        }
+	        
+	        .image-item:hover p {
+	            color: #1e50a2;
+	        }
+	        
+	        .news-list {
+	            flex: 1;
+	            margin-left: 30px;
+	            background-color: white;
+	            padding: 15px;
+	            border-radius: 4px;
+	            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	        }
+	        
+	        .news-list h3 {
+	            color: #1e50a2;
+	            margin-bottom: 15px;
+	            padding-bottom: 10px;
+	            border-bottom: 1px solid #eee;
+	        }
+	        
+	        .news-item {
+	            padding: 8px 0;
+	            border-bottom: 1px dashed #eee;
+	        }
+	        
+	        .news-item a {
+	            color: #333;
+	            text-decoration: none;
+	            font-size: 14px;
+	            transition: all 0.3s;
+	        }
+	        
+	        .news-item a:hover {
+	            color: #1e50a2;
+	        }
+	        
+	        /* 聚焦三农页面特定样式 */
+	        .agriculture-content {
+	            display: flex;
+	        }
+	        
+	        .agriculture-text {
+	            flex: 2;
+	            margin-right: 30px;
+	        }
+	        
+	        .text-block {
+	            background-color: #eee;
+	            padding: 20px;
+	            margin-bottom: 20px;
+	            border-radius: 4px;
+	        }
+	        
+	        .text-block h4 {
+	            font-size: 18px;
+	            margin-bottom: 10px;
+	            color: #1e50a2;
+	        }
+	        
+	        .text-block p {
+	            font-size: 14px;
+	            line-height: 1.6;
+	            color: #333;
+	        }
+	        
+	        /* 数字乡村页面特定样式 */
+	        .digital-center {
+	            text-align: center;
+	            margin-bottom: 30px;
+	        }
+	        
+	        .digital-center h3 {
+	            font-size: 24px;
+	            margin-bottom: 20px;
+	            color: #1e50a2;
+	        }
+	        
+	        .digital-center p {
+	            font-size: 14px;
+	            line-height: 1.6;
+	            margin-bottom: 20px;
+	            text-align: left;
+	        }
+	        
+	        .digital-gallery {
+	            display: grid;
+	            grid-template-columns: repeat(2, 1fr);
+	            grid-gap: 20px;
+	            margin-top: 30px;
+	        }
+	        
+	        .gallery-item {
+	            background-color: white;
+	            border-radius: 4px;
+	            overflow: hidden;
+	            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	            transition: all 0.3s;
+	        }
+	        
+	        .gallery-item:hover {
+	            transform: translateY(-5px);
+	            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+	        }
+	        
+	        .gallery-item img {
+	            width: 100%;
+	            height: 200px;
+	            object-fit: cover;
+	        }
+	        
+	        .gallery-item h4 {
+	            padding: 15px 15px 5px;
+	            color: #333;
+	            transition: all 0.3s;
+	        }
+	        
+	        .gallery-item p {
+	            padding: 5px 15px 15px;
+	            font-size: 14px;
+	            color: #666;
+	            transition: all 0.3s;
+	        }
+	        
+	        .gallery-item:hover h4,
+	        .gallery-item:hover p {
+	            color: #1e50a2;
+	        }
+	        
+	        /* 非遗文化页面特定样式 */
+	        .culture-content {
+	            display: flex;
+	            margin-bottom: 30px;
+	        }
+	        
+	        .culture-image {
+	            flex: 2;
+	            margin-right: 30px;
+	        }
+	        
+	        .culture-image img {
+	            width: 100%;
+	            height: auto;
+	            border-radius: 4px;
+	        }
+	        
+	        .culture-intro {
+	            flex: 1;
+	        }
+	        
+	        .intro-item {
+	            margin-bottom: 15px;
+	            padding-bottom: 15px;
+	            border-bottom: 1px dashed #eee;
+	        }
+	        
+	        .intro-item h4 {
+	            font-size: 16px;
+	            margin-bottom: 8px;
+	            color: #1e50a2;
+	        }
+	        
+	        .intro-item p {
+	            font-size: 14px;
+	            line-height: 1.6;
+	            color: #666;
+	        }
+	        
+	        /* 农村电商页面特定样式 */
+	        .ecommerce-center {
+	            text-align: center;
+	            margin-bottom: 30px;
+	        }
+	        
+	        .ecommerce-center h3 {
+	            font-size: 24px;
+	            margin-bottom: 20px;
+	            color: #1e50a2;
+	        }
+	        
+	        .ecommerce-center p {
+	            font-size: 14px;
+	            line-height: 1.6;
+	            margin-bottom: 20px;
+	            text-align: left;
+	        }
+	        
+	        .ecommerce-image {
+	            margin: 20px 0;
+	            text-align: center;
+	        }
+	        
+	        .ecommerce-image img {
+	            max-width: 100%;
+	            height: auto;
+	            border-radius: 4px;
+	        }
+	        
+	        /* 页脚样式 */
+	        footer {
+	            background-color: #1e50a2;
+	            padding: 20px 0;
+	            text-align: center;
+	            margin-top: 50px;
+	        }
+	        
+	        footer p {
+	            color: white;
+	            font-size: 16px;
+	        }
+	        
+	        /* 页面切换样式 */
+	        .page {
+	            display: none;
+	        }
+	        
+	        .page.active {
+	            display: block;
+	        }
+	    </style>
+	</head>
+	<body>
+	    <!-- 头部 -->
+	    <header>
+	        <div class="header-content">
+	            <div class="logo">
+	                <h1>非遗助农·数字工坊</h1>
+	                <p>Anhui Agricultural Heritage Innovation</p>
+	            </div>
+	            <div class="search-box">
+	                <input type="text" placeholder="搜索...">
+	                <button>搜索</button>
+	            </div>
+	        </div>
+	    </header>
+	    
+	    <!-- 导航栏 -->
+	    <nav>
+	        <div class="nav-container">
+	            <ul class="nav-menu">
+	                <li><a href="#" class="nav-link active" data-page="home">首页</a></li>
+	                <li><a href="#" class="nav-link" data-page="agriculture">聚焦三农</a></li>
+	                <li><a href="#" class="nav-link" data-page="digital">数字乡村</a></li>
+	                <li><a href="#" class="nav-link" data-page="culture">非遗文化</a></li>
+	                <li><a href="#" class="nav-link" data-page="ecommerce">农村电商</a></li>
+	            </ul>
+	        </div>
+	    </nav>
+	    
+	    <!-- 首页内容 -->
+	    <div id="home" class="page active">
+	        <!-- 轮播图 -->
+	        <div class="slider">
+	            <div class="slider-container">
+	                <div class="slide">
+	                    <img src="img/b1.JPG" alt="轮播图1">
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b2.jpg" alt="轮播图2">
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b3.jpg" alt="轮播图3">
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <!-- 乡村振兴 -->
+	        <div class="main-content">
+	            <div class="section-title">
+	                <h2>乡村振兴</h2>
+	                <a href="#">更多 &gt;</a>
+	            </div>
+	            
+	            <div class="content-row">
+	                <div class="image-grid">
+	                    <div class="image-item">
+	                        <img src="img/a111.jpg" alt="印象凤阳">
+	                        <p>印象凤阳</p>
+	                    </div>
+	                    <div class="image-item">
+	                        <img src="img/a2222.jpg" alt="天长芡实">
+	                        <p>天长芡实</p>
+	                    </div>
+	                    <div class="image-item">
+	                        <img src="img/a3333.jpg" alt="徽州渔浦">
+	                        <p>徽州渔浦</p>
+	                    </div>
+	                    <div class="image-item">
+	                        <img src="img/a4444.jpg" alt="琅琊酥糖">
+	                        <p>琅琊酥糖</p>
+	                    </div>
+	                    <div class="image-item">
+	                        <img src="img/a55555.jpg" alt="古井贡酒">
+	                        <p>古井贡酒</p>
+	                    </div>
+	                    <div class="image-item">
+	                        <img src="img/a6666.jpg" alt="稻田香米">
+	                        <p>稻田香米</p>
+	                    </div>
+	                </div>
+	                
+	                <div class="news-list">
+	                    <h3>推荐新闻</h3>
+	                    <div class="news-item"><a href="#">安徽省农业农村厅召开乡村振兴工作推进会</a></div>
+	                    <div class="news-item"><a href="#">徽州传统村落保护与发展论坛在黄山举行</a></div>
+	                    <div class="news-item"><a href="#">凤阳小岗村：从"大包干"到乡村振兴的典范</a></div>
+	                    <div class="news-item"><a href="#">安徽特色农产品亮相中国国际农产品交易会</a></div>
+	                    <div class="news-item"><a href="#">安徽省非遗传承人培训班在合肥开班</a></div>
+	                    <div class="news-item"><a href="#">皖南山区生态农业发展模式获全国推广</a></div>
+	                    <div class="news-item"><a href="#">安徽农村电商发展迅猛，助力农产品上行</a></div>
+	                    <div class="news-item"><a href="#">徽文化元素融入现代乡村建设研讨会召开</a></div>
+	                    <div class="news-item"><a href="#">安徽省发布数字乡村建设三年行动计划</a></div>
+	                    <div class="news-item"><a href="#">传统工艺振兴，安徽非遗产品走俏市场</a></div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <!-- 聚焦三农页面 -->
+	    <div id="agriculture" class="page">
+	        <!-- 轮播图 -->
+	        <div class="slider">
+	            <div class="slider-container">
+	                <div class="slide">
+	                    <img src="img/b2.jpg" alt="轮播图2>
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b3.jpg" alt="轮播图2">
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b1.jpg" alt="轮播图3">
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div class="main-content">
+	            <div class="section-title">
+	                <h2>聚焦三农</h2>
+	                <a href="#">更多 &gt;</a>
+	            </div>
+	            
+	            <div class="agriculture-content">
+	                <div class="agriculture-text">
+	                    <div class="text-block">
+	                        <h4>农业现代化发展</h4>
+	                        <p>安徽省积极推进农业现代化发展，通过科技创新、产业融合、绿色发展等多方面举措，不断提升农业生产效率和农产品质量。近年来，安徽农业机械化水平显著提高，智慧农业应用广泛，新型农业经营主体蓬勃发展，为乡村振兴提供了有力支撑。</p>
+	                    </div>
+	                    <div class="text-block">
+	                        <h4>农村人居环境改善</h4>
+	                        <p>安徽省大力实施农村人居环境整治行动，推进农村厕所革命、生活垃圾治理、生活污水治理等重点任务，农村基础设施和公共服务水平不断提升。各地结合本地特色，打造了一批美丽乡村示范点，农村面貌焕然一新，农民生活品质显著提高。</p>
+	                    </div>
+	                    <div class="text-block">
+	                        <h4>农民增收致富</h4>
+	                        <p>安徽省通过发展特色产业、促进就业创业、完善利益联结机制等多种途径，持续增加农民收入。特色种养业、乡村旅游、农村电商等新业态蓬勃发展，为农民提供了更多增收渠道。同时，农村集体产权制度改革深入推进，农民财产性收入稳步增长。</p>
+	                    </div>
+	                </div>
+	                
+	                <div class="news-list">
+	                    <h3>推荐新闻</h3>
+	                    <div class="news-item"><a href="#">安徽省农业农村厅召开乡村振兴工作推进会</a></div>
+	                    <div class="news-item"><a href="#">安徽特色农产品亮相中国国际农产品交易会</a></div>
+	                    <div class="news-item"><a href="#">皖南山区生态农业发展模式获全国推广</a></div>
+	                    <div class="news-item"><a href="#">凤阳小岗村：从"大包干"到乡村振兴的典范</a></div>
+	                    <div class="news-item"><a href="#">安徽省发布数字乡村建设三年行动计划</a></div>
+	                    <div class="news-item"><a href="#">安徽农村电商发展迅猛，助力农产品上行</a></div>
+	                    <div class="news-item"><a href="#">徽州传统村落保护与发展论坛在黄山举行</a></div>
+	                    <div class="news-item"><a href="#">安徽省非遗传承人培训班在合肥开班</a></div>
+	                    <div class="news-item"><a href="#">徽文化元素融入现代乡村建设研讨会召开</a></div>
+	                    <div class="news-item"><a href="#">传统工艺振兴，安徽非遗产品走俏市场</a></div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <!-- 数字乡村页面 -->
+	    <div id="digital" class="page">
+	        <!-- 轮播图 -->
+	        <div class="slider">
+	            <div class="slider-container">
+	                <div class="slide">
+	                    <img src="img/b3.jpg">
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b2.jpg" alt="轮播图2">
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b1.jpg" alt="轮播图3">
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div class="main-content">
+	            <div class="digital-center">
+	                <h3>数字化展厅</h3>
+	                <p>安徽省数字乡村建设以数字化、网络化、智能化为方向，加快推进农业农村现代化。通过新一代信息技术与农业农村发展深度融合，全面提升农业生产智能化、经营网络化、管理高效化、服务便捷化水平，为乡村振兴提供新动能。</p>
+	                <p>目前，安徽省已建成一批数字农业示范基地，农业物联网应用广泛，农产品电商蓬勃发展，农村信息服务体系不断完善。数字技术正在深刻改变传统农业生产方式和农村生活方式，为乡村全面振兴注入强劲动力。</p>
+	            </div>
+	            
+	            <div class="digital-gallery">
+	                <div class="gallery-item">
+	                    <img src="img/c1.jpg" alt="智慧农业">
+	                    <h4>智慧农业应用</h4>
+	                    <p>通过物联网、大数据、人工智能等技术，实现农业生产精准化、智能化管理，提高资源利用率和生产效率。</p>
+	                </div>
+	                <div class="gallery-item">
+	                    <img src="img/c2.JPG" alt="农村电商">
+	                    <h4>农村电商发展</h4>
+	                    <p>搭建农产品网络销售平台，拓宽农产品销售渠道，促进小农户与大市场有效对接，助力农民增收。</p>
+	                </div>
+	                <div class="gallery-item">
+	                    <img src="./img/c3.jpg" alt="数字治理">
+	                    <h4>乡村数字治理</h4>
+	                    <p>推进"互联网+政务服务"向乡村延伸，提升乡村治理智能化、精细化水平，增强农民获得感。</p>
+	                </div>
+	                <div class="gallery-item">
+	                    <img src="img/c4.jpg" alt="信息服务">
+	                    <h4>信息惠民服务</h4>
+	                    <p>构建覆盖乡村的信息服务体系，提供便捷的医疗、教育、金融等服务，缩小城乡数字鸿沟。</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <!-- 非遗文化页面 -->
+	    <div id="culture" class="page">
+	        <!-- 轮播图 -->
+	        <div class="slider">
+	            <div class="slider-container">
+	                <div class="slide">
+	                    <img src="img/b2.jpg" alt="轮播图1">
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b1.jpg" alt="轮播图2">
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b3.jpg" alt="轮播图3">
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div class="main-content">
+	            <div class="section-title">
+	                <h2>非遗文化</h2>
+	                <a href="#">更多 &gt;</a>
+	            </div>
+	            
+	            <div class="culture-content">
+	                <div class="culture-image">
+	                    <img src="./img/d1.JPG" alt="安徽非遗文化展示">
+	                </div>
+	                <div class="culture-intro">
+	                    <div class="intro-item">
+	                        <h4>徽州三雕</h4>
+	                        <p>徽州三雕是指徽派建筑中的木雕、石雕和砖雕，以其精湛的工艺和丰富的文化内涵闻名于世，是徽文化的重要载体。</p>
+	                    </div>
+	                    <div class="intro-item">
+	                        <h4>宣纸制作技艺</h4>
+	                        <p>宣纸有"纸寿千年"之美誉，其制作工艺复杂，品质优良，是中国传统手工纸的杰出代表，被列入人类非物质文化遗产名录。</p>
+	                    </div>
+	                    <div class="intro-item">
+	                        <h4>徽墨制作技艺</h4>
+	                        <p>徽墨是中国传统制墨工艺中的瑰宝，具有"落纸如漆，万载存真"的特点，制作工艺考究，文化价值极高。</p>
+	                    </div>
+	                    <div class="intro-item">
+	                        <h4>徽剧</h4>
+	                        <p>徽剧是中国古老的地方戏曲剧种之一，唱腔优美，表演细腻，是徽文化的重要组成部分，被列入国家级非物质文化遗产名录。</p>
+	                    </div>
+	                </div>
+	            </div>
+	            
+	            <div class="digital-gallery" style="margin-top: 30px;">
+	                <div class="gallery-item">
+	                    <img src="img/d2.jpg" alt="徽州三雕">
+	                    <h4>徽州三雕</h4>
+	                    <p>徽派建筑中的木雕、石雕和砖雕统称为徽州三雕，以其精湛的工艺和丰富的文化内涵闻名于世。</p>
+	                </div>
+	                <div class="gallery-item">
+	                    <img src="img/d3.png" alt="宣纸制作">
+	                    <h4>宣纸制作技艺</h4>
+	                    <p>宣纸制作工艺复杂，品质优良，有"纸寿千年"之美誉，是中国传统手工纸的杰出代表。</p>
+	                </div>
+	                <div class="gallery-item">
+	                    <img src="img/d4.png" alt="徽墨制作">
+	                    <h4>徽墨制作技艺</h4>
+	                    <p>徽墨具有"落纸如漆，万载存真"的特点，制作工艺考究，是中国传统制墨工艺中的瑰宝。</p>
+	                </div>
+	                <div class="gallery-item">
+	                    <img src="img/d5.png" alt="徽剧表演">
+	                    <h4>徽剧</h4>
+	                    <p>徽剧是中国古老的地方戏曲剧种之一，唱腔优美，表演细腻，是徽文化的重要组成部分。</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <!-- 农村电商页面 -->
+	    <div id="ecommerce" class="page">
+	        <!-- 轮播图 -->
+	        <div class="slider">
+	            <div class="slider-container">
+	                <div class="slide">
+	                    <img src="img/b1.jpg" alt="轮播图1">
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b2.jpg" alt="轮播图2">
+	                </div>
+	                <div class="slide">
+	                    <img src="img/b3.jpg" alt="轮播图3">
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <div class="main-content">
+	            <div class="ecommerce-center">
+	                <h3>非遗助农 产品电商高质量发展大有可为</h3>
+	                <p>安徽省充分发挥农村电商在促进农产品上行、带动农民增收、助力乡村振兴中的重要作用，积极推进农村电商高质量发展。通过完善基础设施、培育市场主体、创新商业模式、强化品牌建设等举措，农村电商已成为推动安徽农业农村现代化的重要力量。</p>
+	            </div>
+	            
+	            <div class="ecommerce-image">
+	                <img src="./img/e1.jpg" alt="安徽农村电商发展">
+	            </div>
+	            
+	            <div class="agriculture-text" style="margin-top: 30px;">
+	                <div class="text-block">
+	                    <p>安徽省农村电商发展迅速，已形成了一批具有影响力的电商平台和电商品牌。各地结合本地特色农产品资源，大力发展农产品电商，推动小农户与大市场有效对接。同时，电商与快递物流协同发展，农村快递服务网络不断完善，为农产品上行提供了有力支撑。</p>
+	                </div>
+	                <div class="text-block">
+	                    <p>安徽省注重培育农村电商人才，通过开展电商培训、建设电商服务站、培育电商带头人等方式，提升农民电商应用能力。许多返乡创业青年、新型职业农民通过电商平台销售农产品，实现了创业梦想，带动了周边农户共同致富。</p>
+	                </div>
+	                <div class="text-block">
+	                    <p>未来，安徽省将继续推进农村电商高质量发展，加强农产品品牌建设，提升农产品标准化、品牌化、电商化水平，促进农村一二三产业融合发展，为乡村振兴注入新动能。</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <!-- 页脚 -->
+	    <footer>
+	       <footer>
+	           <p>徽农遗新</p>
+	           <div class="visit-count">
+	               总访问量: <span id="visitorCount">0</span>
+	           </div>
+	       </footer>
+	    </footer>
+	    
+	    <script>
+	        // 轮播图功能
+	        let currentSlide = 0;
+	        const slides = document.querySelectorAll('.slide');
+	        const sliderContainer = document.querySelector('.slider-container');
+	        
+	        function showSlide(n) {
+	            currentSlide = (n + slides.length) % slides.length;
+	            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+	        }
+	        
+	        function nextSlide() {
+	            showSlide(currentSlide + 1);
+	        }
+	        
+	        
+	        
+	        // 页面切换功能
+	        const navLinks = document.querySelectorAll('.nav-link');
+	        const pages = document.querySelectorAll('.page');
+	        
+	        navLinks.forEach(link => {
+	            link.addEventListener('click', function(e) {
+	                e.preventDefault();
+	                
+	                // 移除所有active类
+	                navLinks.forEach(nav => nav.classList.remove('active'));
+	                pages.forEach(page => page.classList.remove('active'));
+	                
+	                // 添加active类到当前点击的链接和对应的页面
+	                this.classList.add('active');
+	                const pageId = this.getAttribute('data-page');
+	                document.getElementById(pageId).classList.add('active');
+	            });
+	        });
+	        
+	        // 图片和文字点击变色效果
+	        const imageItems = document.querySelectorAll('.image-item, .gallery-item');
+	        imageItems.forEach(item => {
+	            item.addEventListener('click', function() {
+	                // 移除其他项的active类
+	                imageItems.forEach(img => {
+	                    img.style.backgroundColor = '';
+	                    const text = img.querySelector('p');
+	                    if(text) text.style.color = '#333';
+	                    const title = img.querySelector('h4');
+	                    if(title) title.style.color = '#333';
+	                });
+	                
+	                // 添加active类到当前点击的项
+	                this.style.backgroundColor = '#f0f8ff';
+	                const text = this.querySelector('p');
+	                if(text) text.style.color = '#1e50a2';
+	                const title = this.querySelector('h4');
+	                if(title) title.style.color = '#1e50a2';
+	            });
+	        });
+	        
+	        // 新闻点击变色效果
+	        const newsItems = document.querySelectorAll('.news-item a');
+	        newsItems.forEach(item => {
+	            item.addEventListener('click', function(e) {
+	                e.preventDefault();
+	                
+	                // 移除其他项的active类
+	                newsItems.forEach(news => news.style.color = '#333');
+	                
+	                // 添加active类到当前点击的项
+	                this.style.color = '#1e50a2';
+	            });
+	        });
+			// 浏览量计数功能
+			function updateVisitorCount() {
+			    let count = localStorage.getItem('visitorCount');
+			    if (!count) {
+			        count = 0;
+			    }
+			    count = parseInt(count) + 10;
+			    localStorage.setItem('visitorCount', count);
+			    document.getElementById('visitorCount').textContent = count;
+			}
+			
+			// 页面加载时更新浏览量
+			window.addEventListener('DOMContentLoaded', updateVisitorCount);
+	    </script>
+	</body>
+	</html>	
+	</body>
+</html>
