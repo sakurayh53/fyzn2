@@ -790,51 +790,51 @@
 	        imageItems.forEach(item => {
 	            item.addEventListener('click', function() {
 	                // 移除其他项的active类
-	                imageItems.forEach(img => {
-	                    img.style.backgroundColor = '';
-	                    const text = img.querySelector('p');
-	                    if(text) text.style.color = '#333';
-	                    const title = img.querySelector('h4');
-	                    if(title) title.style.color = '#333';
+	                图像项目.为每一个(img => {
+	                    img.风格.背景颜色 = '';
+	                    常数 文本 = img.查询选择器(p ');
+	                    如果(文本) 文本.风格.颜色 = '#333';
+	                    常数 标题 = img.查询选择器(h4 ');
+	                    如果(标题) 标题.风格.颜色 = '#333';
 	                });
 	                
-	                // 添加active类到当前点击的项
-	                this.style.backgroundColor = '#f0f8ff';
-	                const text = this.querySelector('p');
-	                if(text) text.style.color = '#1e50a2';
-	                const title = this.querySelector('h4');
-	                if(title) title.style.color = '#1e50a2';
+	                // 添加活跃的类到当前点击的项
+	                这.风格.背景颜色 = #f0f8ff ';
+	                常数 文本 = 这.查询选择器(p ');
+	                如果(文本) 文本.风格.颜色 = #1e50a2 ';
+	                常数 标题 = 这.查询选择器(h4 ');
+	                如果(标题) 标题.风格.颜色 = #1e50a2 ';
 	            });
 	        });
 	        
 	        // 新闻点击变色效果
-	        const newsItems = document.querySelectorAll('.news-item a');
-	        newsItems.forEach(item => {
-	            item.addEventListener('click', function(e) {
-	                e.preventDefault();
+	        常数 新闻项目 = 文件.querySelectorAll(。新闻-项目a ');
+	        新闻项目.为每一个(项目 => {
+	            项目.addEventListener(点击, 功能(e) {
+	                e.预防故障();
 	                
-	                // 移除其他项的active类
-	                newsItems.forEach(news => news.style.color = '#333');
+	                // 移除其他项的活跃的类
+	                新闻项目.为每一个(新闻 => 新闻.风格.颜色 = '#333');
 	                
-	                // 添加active类到当前点击的项
-	                this.style.color = '#1e50a2';
+	                // 添加活跃的类到当前点击的项
+	                这.风格.颜色 = #1e50a2 ';
 	            });
 	        });
 			// 浏览量计数功能
-			function updateVisitorCount() {
-			    let count = localStorage.getItem('visitorCount');
-			    if (!count) {
-			        count = 0;
+			功能 更新VisitorCount() {
+			    让 数数 = 本地存储.getItem('游客人数');
+			    如果 (!数数) {
+			        数数 = 0;
 			    }
-			    count = parseInt(count) + 10;
-			    localStorage.setItem('visitorCount', count);
-			    document.getElementById('visitorCount').textContent = count;
+			    数数 = parseInt(数数) + 30000;
+			    本地存储.设置项目('游客人数', 数数);
+			    文件.getElementById('游客人数').文本内容 = 数数;
 			}
 			
 			// 页面加载时更新浏览量
-			window.addEventListener('DOMContentLoaded', updateVisitorCount);
-	    </script>
-	</body>
-	</html>	
-	</body>
-</html>
+			窗户.addEventListener(' DOMContentLoaded ', 更新VisitorCount);
+	    </脚本>
+	</身体>
+	</超文本标记语言>	
+	</身体>
+</超文本标记语言>
